@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Grocery Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #2e8b57;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2e8b57;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #2e8b57;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #1e6b47;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Grocery Item</h1><br>
+    <div style="margin-bottom: 20px;">
+        <button style="background-color: #2e8b57; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;" onclick="window.location.href='/dashboard'">Go to Dashboard</button>
+        <button style="background-color: #2e8b57; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;" onclick="window.location.href='/logout'">Logout</button>
+    </div>
+    <form action="/grocery/{{ grocery.id }}/update" method="POST">
+        <label for="item">Item:</label>
+        <input type="text" id="item" name="item" value="{{ grocery.item }}" required><br><br>
+        
+        <label for="type">Type of Grocery:</label>
+        <input type="text" id="type" name="type" value="{{ grocery.type }}" required><br><br>
+        
+        <label for="brand">Brand Preference</label>
+        <input type="text" id="brand" name="brand" value="{{ grocery.brand }}" required><br><br>
+        
+        <label for="person">Who wants it:</label>
+        <input type="text" id="person" name="person" value="{{ grocery.person }}" required><br><br>
+        
+        <input type="submit" value="Update Item">
+    </form>
+</body>
+</html>

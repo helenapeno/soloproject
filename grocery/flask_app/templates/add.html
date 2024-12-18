@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Grocery Item</title>
+<style>
+    body {
+        background-color: rgb(218, 212, 212);
+        color: green;
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+    label, input {
+        margin: 10px 0;
+    }
+    input[type="text"] {
+        padding: 5px;
+        border: 1px solid green;
+        background-color: rgb(153, 149, 149);
+        color: green;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: green;
+        color: rgb(206, 206, 206);
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: darkgreen;
+    }
+</style>
+</head>
+<body>
+    <h1>Add items to your grocery list here</h1>
+    <form action="/submit_grocery" method="post">
+        <label for="item">Item:</label>
+        <input type="text" id="item" name="item" required><br><br>
+        
+        <label for="type">Type of grocery?</label>
+        <input type="text" id="type" name="type" required><br><br>
+        
+        <label for="brand">Brand preference?</label>
+        <input type="text" id="brand" name="brand"><br><br>
+        
+        <label for="person">Who wants it?</label>
+        <input type="text" id="person" name="person" required><br><br>
+        
+        <button type="submit">Submit</button>
+        <button type="button" onclick="window.location.href='/dashboard'">Return to Dashboard</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .actions button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .actions button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <div style="text-align: right;"></div>
+        <button onclick="location.href='/logout'" style="background-color: #f44336; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 3px;">Logout</button>
+    </div>
+    <h1>Grocery Dashboard</h1>
+    <h2> Welcome {{user.last_name}} Family!</h2>
+    <h2>Current Grocery List</h2>
+    <div style="margin-bottom: 20px;"></div>
+        <button onclick="location.href='/new_grocery'" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 3px;">New Grocery</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Type</th>
+                <th>Brand</th>
+                <th>Person</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grocery in need_groceries %}
+            <tr>
+                <td>{{grocery.item}}</td>
+                <td>{{grocery.type}}</td>
+                <td>{{grocery.brand}}</td>
+                <td>{{grocery.person}}</td>
+                <td>
+                <a href="/grocery/{{ grocery.id }}/delete">Remove</a> | 
+                <a href="/grocery/{{ grocery.id }}/edit">Edit</a> | 
+                <a href="/grocery/{{ grocery.id }}/buy">Buy</a> | 
+                <a href="/grocery/{{ grocery.id}}/view"> View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Previously Bought Items</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Type</th>
+                <th>Brand</th>
+                <th>Person</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grocery in bought_groceries %}
+            <tr>
+                <td>{{grocery.item}}</td>
+                <td>{{grocery.type}}</td>
+                <td>{{grocery.brand}}</td>
+                <td>{{grocery.person}}</td>
+                <td>
+                    <a href="/grocery/{{ grocery.id }}/delete">Remove</a> | 
+                    <a href="/grocery/{{ grocery.id }}/edit">Edit</a> | 
+                    <a href="/grocery/{{ grocery.id }}/unbuy">Add to list</a> | 
+                    <a href="/grocery/{{ grocery.id}}/view"> View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
